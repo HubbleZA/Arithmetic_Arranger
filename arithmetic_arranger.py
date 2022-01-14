@@ -12,19 +12,16 @@ def arithmetic_arranger(problems, check = False):
     }
 #Splitting the input into a list
     if len(myinput) > 5:
-        print("Error: Too many problems.")
-        sys.exit()
+        raise ValueError("Error: Too many problems.")
     for i in range(len(myinput)):
         if myinput[i] == "":
-            print("Error: This is an invalid input")
-            sys.exit()
+            raise ValueError("Error: This is an invalid input")
         else:
             try:
                 myinput[i] = myinput[i].split()
 
             except:
-                print("Error: This is an invalid input")
-                sys.exit()
+                raise ValueError("Error: This is an invalid input")
     myinputstr = copy.deepcopy(myinput)
 
 #Converting numbers from string to in from the list as well as checking for the lenth of the digits
@@ -32,8 +29,7 @@ def arithmetic_arranger(problems, check = False):
         for h in range(len(myinput[i])):
             num = myinput[i][h]
             if len(num) > 4:
-                print("Error: Numbers cannot be more than four digits.")
-                sys.exit()
+                raise ValueError("Error: Numbers cannot be more than four digits.")
             else:
                 if isnumeric(num) == True:
                     myinput[i][h] = int(myinput[i][h])
@@ -50,19 +46,16 @@ def arithmetic_arranger(problems, check = False):
                     num1 = myinput[i][k]
                     num2 = myinput[i][k + 2]
                 except:
-                    print("Error: This is an invalid input")
-                    sys.exit()
+                    raise ValueError("Error: This is an invalid input")
                 if isinstance(num1, int) == True and isinstance(num2, int) == True:
 #checking the operator is a + or - sign
                     try:
                         total = ops[myinput[i][k+1]](num1,num2)
                         k += 3
                     except:
-                        print("Error: Operator must be '+' or '-'")
-                        sys.exit()
+                        raise ValueError("Error: Operator must be '+' or '-'")
                 else:
-                    print("Error: Numbers must only contain digits")
-                    sys.exit()
+                    raise ValueError("Error: Numbers must only contain digits")
             else:
 # Checking that the input is numeric
                 num3 = myinput[i][k + 1]
@@ -72,11 +65,9 @@ def arithmetic_arranger(problems, check = False):
                         total = ops[myinput[i][k]](total,num3)
                         k += 2
                     except:
-                        print("Error: Operator must be '+' or '-'")
-                        sys.exit()
+                        raise ValueError("Error: Operator must be '+' or '-'")
                 else:
-                    print("Error: Numbers must only contain digits")
-                    sys.exit()
+                    raise ValueError("Error: Numbers must only contain digits")
         allanswers.append(total)
 
 #printing the output
