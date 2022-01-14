@@ -56,15 +56,14 @@ def arithmetic_arranger(problems, check = False):
                 except:
                     return "Error: Numbers must only contain digits."
 #checking the operator is a + or - sign
-                if isinstance(num1, int) == True and isinstance(num2, int) == True:
-                    try:
-                        if myinput[i][k+1] == '+' or myinput[i][k+1] == '-':
-                            total = ops[myinput[i][k + 1]](num1, num2)
-                            k += 3
-                        else:
-                            raise ValueError
-                    except:
-                        return "Error: Operator must be '+' or '-'."
+                try:
+                    if myinput[i][k+1] == '+' or myinput[i][k+1] == '-':
+                        total = ops[myinput[i][k + 1]](num1, num2)
+                        k += 3
+                    else:
+                        raise ValueError
+                except:
+                    return "Error: Operator must be '+' or '-'."
             else:
 # Checking that the input is numeric
                 num3 = myinput[i][k + 1]
@@ -73,16 +72,15 @@ def arithmetic_arranger(problems, check = False):
                         raise ValueError
                 except:
                     return "Error: Numbers must only contain digits."
-                if isinstance(num3, int) == True:
 # checking the operator is a + or - sign
-                    try:
-                        if myinput[i][k] == '+' or myinput[i][k] == '-':
-                            total = ops[myinput[i][k]](total,num3)
-                            k += 2
-                        else:
-                            raise ValueError
-                    except:
-                        return "Error: Numbers must only contain digits."
+                try:
+                    if myinput[i][k] == '+' or myinput[i][k] == '-':
+                        total = ops[myinput[i][k]](total,num3)
+                        k += 2
+                    else:
+                        raise ValueError
+                except:
+                    return "Error: Numbers must only contain digits."
 
         allanswers.append(total)
 
