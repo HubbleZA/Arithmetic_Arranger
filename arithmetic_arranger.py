@@ -5,12 +5,12 @@ import copy
 def arithmetic_arranger(problems, check = False):
     myinput = problems
     allanswers = []
-#Operators used in the calculations
+# Operators used in the calculations
     ops = {
         '+': operator.add,
         '-': operator.sub
     }
-#Splitting the input into a list
+# Splitting the input into a list
     try:
         if len(myinput) > 5:
             raise ValueError
@@ -24,9 +24,9 @@ def arithmetic_arranger(problems, check = False):
                 myinput[i] = myinput[i].split()
         except:
             return "Error: This is an invalid input"
-#Copying the String version of the list before it is converted to int for printing later
+# Copying the String version of the list before it is converted to int for printing later
     myinputstr = copy.deepcopy(myinput)
-#Converting numbers from string to in from the list as well as checking for the lenth of the digits
+# Converting numbers from string to in from the list as well as checking for the lenth of the digits
     for i in range(len(myinput)):
         for h in range(len(myinput[i])):
             num = myinput[i][h]
@@ -38,13 +38,13 @@ def arithmetic_arranger(problems, check = False):
                         myinput[i][h] = int(myinput[i][h])
             except:
                 return "Error: Numbers cannot be more than four digits."
-#Finding the total of the numbers provided
+# Finding the total of the numbers provided
     for i in range(len(myinput)):
         k = 0
         total = 0
         while k < len(myinput[i]):
             if k < 3:
-#Checking that the input is numeric
+# Checking that the input is numeric
                 try:
                     num1 = myinput[i][k]
                     num2 = myinput[i][k + 2]
@@ -55,7 +55,7 @@ def arithmetic_arranger(problems, check = False):
                         raise ValueError
                 except:
                     return "Error: Numbers must only contain digits."
-#checking the operator is a + or - sign
+# checking the operator is a + or - sign
                 try:
                     if myinput[i][k+1] in ops:
                         total = ops[myinput[i][k + 1]](num1, num2)
@@ -65,7 +65,7 @@ def arithmetic_arranger(problems, check = False):
                 except:
                     return "Error: Operator must be '+' or '-'."
             else:
-# Checking that the input is numeric
+# checking that the input is numeric
                 num3 = myinput[i][k + 1]
                 try:
                     if isinstance(num3, int) != True:
@@ -84,7 +84,7 @@ def arithmetic_arranger(problems, check = False):
 
         allanswers.append(total)
 
-#printing the output
+# printing the output
     testprnt = [[] * 1 for i in range(len(myinputstr))]
     for i in range(len(myinputstr)):
         k = 0
@@ -100,10 +100,10 @@ def arithmetic_arranger(problems, check = False):
         testprnt[i].append("-"*line)
         if check == True:
             testprnt[i].append(str(allanswers[i]).rjust(line))
-#splitting the list into a new list with the columns in touples
+# splitting the list into a new list with the columns in touples
     columns = list(zip(*testprnt))
     answer = ''
-#formatting the Output
+# formatting the Output
     for i in range(len(columns)):
         space = 1
         for k in columns[i]:
