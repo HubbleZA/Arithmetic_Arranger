@@ -11,28 +11,34 @@ def arithmetic_arranger(problems, check = False):
         '-': operator.sub
     }
 #Splitting the input into a list
-    if len(myinput) > 5:
-        raise ValueError("Error: Too many problems.")
+    try:
+        if len(myinput) > 5:
+            raise ValueError
+    except:
+        return "Error: Too many problems."
     for i in range(len(myinput)):
-        if myinput[i] == "":
-            raise ValueError("Error: This is an invalid input")
-        else:
-            try:
-                myinput[i] = myinput[i].split()
+        try:
+            if myinput[i] == "":
+                raise ValueError
+            else:
+                    myinput[i] = myinput[i].split()
+        except:
+            return "Error: This is an invalid input"
 
-            except:
-                raise ValueError("Error: This is an invalid input")
     myinputstr = copy.deepcopy(myinput)
 
 #Converting numbers from string to in from the list as well as checking for the lenth of the digits
     for i in range(len(myinput)):
         for h in range(len(myinput[i])):
             num = myinput[i][h]
-            if len(num) > 4:
-                raise ValueError("Error: Numbers cannot be more than four digits.")
-            else:
-                if isnumeric(num) == True:
-                    myinput[i][h] = int(myinput[i][h])
+            try:
+                if len(num) > 4:
+                    raise ValueError
+                else:
+                    if isnumeric(num) == True:
+                        myinput[i][h] = int(myinput[i][h])
+            except:
+                return "Error: Numbers cannot be more than four digits."
 
 #Finding the total of the numbers provided
     allanswers = []
