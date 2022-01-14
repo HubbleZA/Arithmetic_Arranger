@@ -5,6 +5,7 @@ import copy
 
 def arithmetic_arranger(problems, check = False):
     myinput = problems
+    allanswers = []
 #Operators used in the calculations
     ops = {
         '+': operator.add,
@@ -21,12 +22,11 @@ def arithmetic_arranger(problems, check = False):
             if myinput[i] == "":
                 raise ValueError
             else:
-                    myinput[i] = myinput[i].split()
+                myinput[i] = myinput[i].split()
         except:
             return "Error: This is an invalid input"
-
+#Copying the String version of the list before it is converted to int for printing later
     myinputstr = copy.deepcopy(myinput)
-
 #Converting numbers from string to in from the list as well as checking for the lenth of the digits
     for i in range(len(myinput)):
         for h in range(len(myinput[i])):
@@ -39,9 +39,7 @@ def arithmetic_arranger(problems, check = False):
                         myinput[i][h] = int(myinput[i][h])
             except:
                 return "Error: Numbers cannot be more than four digits."
-
 #Finding the total of the numbers provided
-    allanswers = []
     for i in range(len(myinput)):
         k = 0
         total = 0
@@ -77,7 +75,7 @@ def arithmetic_arranger(problems, check = False):
         allanswers.append(total)
 
 #printing the output
-    testprnt = [[] * 1 for i in range(len(myinput))]
+    testprnt = [[] * 1 for i in range(len(myinputstr))]
     for i in range(len(myinputstr)):
         k = 0
         num = max(myinputstr[i], key=len)
@@ -95,6 +93,7 @@ def arithmetic_arranger(problems, check = False):
 #splitting the list into a new list with the columns in touples
     columns = list(zip(*testprnt))
     answer = ''
+#formatting the Output
     for i in range(len(columns)):
         space = 1
         for k in columns[i]:
