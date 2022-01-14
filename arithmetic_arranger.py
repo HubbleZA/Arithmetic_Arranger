@@ -99,10 +99,18 @@ def arithmetic_arranger(problems, check = False):
     columns = list(zip(*testprnt))
     answer = ''
     for i in range(len(columns)):
-        answer = answer + ''
+        space = 1
         for k in columns[i]:
-            answer = answer + (k + '\t\t')
-        answer = answer + '\n'
+            if space != len(columns[i]):
+                answer = answer + (k + '    ')
+                space += 1
+            else:
+                answer = answer + k
+                space += 1
+        if (i+1) == len(columns):
+            answer = answer
+        else:
+            answer = answer + '\\n'
 
     arranged_problems = answer
 
