@@ -57,7 +57,7 @@ def arithmetic_arranger(problems, check = False):
                     return "Error: Numbers must only contain digits."
 #checking the operator is a + or - sign
                 try:
-                    if myinput[i][k+1] == '+' or myinput[i][k+1] == '-':
+                    if myinput[i][k+1] in ops:
                         total = ops[myinput[i][k + 1]](num1, num2)
                         k += 3
                     else:
@@ -74,7 +74,7 @@ def arithmetic_arranger(problems, check = False):
                     return "Error: Numbers must only contain digits."
 # checking the operator is a + or - sign
                 try:
-                    if myinput[i][k] == '+' or myinput[i][k] == '-':
+                    if myinput[i][k] in ops:
                         total = ops[myinput[i][k]](total,num3)
                         k += 2
                     else:
