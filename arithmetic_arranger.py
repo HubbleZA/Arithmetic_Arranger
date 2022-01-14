@@ -110,7 +110,7 @@ def arithmetic_arranger(problems, check = False):
         if (i+1) == len(columns):
             answer = answer
         else:
-            answer = answer + '\\n'
+            answer = answer + '\n'
 
     arranged_problems = answer
 
