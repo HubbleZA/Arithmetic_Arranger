@@ -50,28 +50,41 @@ def arithmetic_arranger(problems, check = False):
                     num1 = myinput[i][k]
                     num2 = myinput[i][k + 2]
                 except:
-                    raise ValueError("Error: This is an invalid input")
-                if isinstance(num1, int) == True and isinstance(num2, int) == True:
+                    return "Error: Invalid Input."
+                try:
+                    if isinstance(num1, int) != True or isinstance(num2, int) != True:
+                        raise ValueError
+                except:
+                    return "Error: Numbers must only contain digits."
 #checking the operator is a + or - sign
+                if isinstance(num1, int) == True and isinstance(num2, int) == True:
                     try:
-                        total = ops[myinput[i][k+1]](num1,num2)
-                        k += 3
+                        if myinput[i][k+1] == '+' or myinput[i][k+1] == '-':
+                            total = ops[myinput[i][k + 1]](num1, num2)
+                            k += 3
+                        else:
+                            raise ValueError
                     except:
-                        raise ValueError("Error: Operator must be '+' or '-'")
-                else:
-                    raise ValueError("Error: Numbers must only contain digits")
+                        return "Error: Operator must be '+' or '-'."
             else:
 # Checking that the input is numeric
                 num3 = myinput[i][k + 1]
+                try:
+                    if isinstance(num3, int) != True:
+                        raise ValueError
+                except:
+                    return "Error: Numbers must only contain digits."
                 if isinstance(num3, int) == True:
 # checking the operator is a + or - sign
                     try:
-                        total = ops[myinput[i][k]](total,num3)
-                        k += 2
+                        if myinput[i][k] == '+' or myinput[i][k] == '-':
+                            total = ops[myinput[i][k]](total,num3)
+                            k += 2
+                        else:
+                            raise ValueError
                     except:
-                        raise ValueError("Error: Operator must be '+' or '-'")
-                else:
-                    raise ValueError("Error: Numbers must only contain digits")
+                        return "Error: Numbers must only contain digits."
+
         allanswers.append(total)
 
 #printing the output
