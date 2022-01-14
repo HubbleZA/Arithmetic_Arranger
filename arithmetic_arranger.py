@@ -1,5 +1,4 @@
 import operator
-import sys
 from numpy.core.defchararray import isnumeric
 import copy
 
