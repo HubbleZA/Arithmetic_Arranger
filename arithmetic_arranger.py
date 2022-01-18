@@ -89,7 +89,7 @@ def arithmetic_arranger(problems, check = False):
     for i in range(len(myinputstr)):
         k = 0
         num = max(myinputstr[i], key=len)
-        line = len(num) +2
+        line = len(num) + 2
         while k < (len(myinputstr[i])):
             if k < 1:
                 testprnt[i].append(myinputstr[i][k].rjust(line))
